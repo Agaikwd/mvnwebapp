@@ -21,7 +21,7 @@ pipeline {
         stage('Build & Push Image'){
             agent any
             environment{
-                IMAGE= ashudhub/mvnwebapp:"${BUILD_NUMBER}"
+                IMAGE = "ashudhub/mvnwebapp:${BUILD_NUMBER}"
                 REGISTRY_CREDENTIALS = credentials('docker')
             }
             steps{
