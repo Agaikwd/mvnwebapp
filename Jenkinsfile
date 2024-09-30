@@ -27,10 +27,10 @@ pipeline {
             }
             steps{
                 script {
-                		sh 'docker build -t ashudhub/mvnwebapp:'${BUILD_NUMBER}' .'
+                		sh 'docker build -t ashudhub/mvnwebapp:latest .'
                         //def dockerImage = docker.image("${IMAGE}")
                         docker.withRegistry('https://index.docker.io/v1/', 'docker') {
-                        docker.image("ashudhub/mvnwebapp:${BUILD_NUMBER}").push() }
+                        docker.image("ashudhub/mvnwebapp:latest").push() }
                         
                 }
             }
