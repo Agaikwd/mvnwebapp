@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Static Code Analysis') {
             steps {
-               sh 'mvn sonar:sonar -Dsonar.host.url=http://13.232.158.43:9000 -Dsonar.login=sonarqube'
+               sh 'mvn sonar:sonar -Dsonar.host.url=http://13.232.158.43:9000 -Dsonar.login='sonarqube''
             }
         }        
         stage('Build & Push Image'){
