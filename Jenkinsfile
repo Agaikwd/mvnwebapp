@@ -23,7 +23,6 @@ pipeline {
             environment{
                 //IMAGE = "ashudhub/mvnwebapp:${BUILD_NUMBER}"
                 REGISTRY_CREDENTIALS = credentials('docker')
-                HOME = "${env.WORKSPACE}"
             }
             steps{
                 script {
