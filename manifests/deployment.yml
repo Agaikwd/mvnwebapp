@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvnwebapp-deployment
+  labels:
+    app: mvnwebapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mvnwebapp
+  template:
+    metadata:
+      labels:
+        app: mvnwebapp
+    spec:
+      containers:
+      - name: sbdapp
+        image: ashudhub/mvnwebapp:1
+        ports:
+        - containerPort: 8080
