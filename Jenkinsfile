@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker { image 'maven:latest'
-                 arg '-u root'
+                 args '-u root'
                 }   
             }
             steps {
