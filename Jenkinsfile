@@ -21,13 +21,14 @@ pipeline {
         stage('Build & Push Image'){
             agent any
             environment{
+                IMAGE= ashudhub/mvnwebapp:"${BUILD_NUMBER}"
                 REGISTRY_CREDENTIALS = credentials('docker')
             }
             steps{
                 script {
-                		sh 'docker build -t ashudhub/mvnwebapp:'${BUILD_NUMBER}' .'
+                		sh 'docker build -t ${IMAGE} .'
                         docker.withRegistry('https://index.docker.io/v1/', 'docker')
-                        docker.image("ashudhub/mvnwebapp:'${BUILD_NUMBER}'").push()
+                        docker.image("${IMAGE}").push()
                         
                 }
             }
