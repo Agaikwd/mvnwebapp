@@ -21,16 +21,16 @@ pipeline {
         stage('Build & Push Image'){
             agent any
             environment{
-                IMAGE = "ashudhub/mvnwebapp:${BUILD_NUMBER}"
+                //IMAGE = "ashudhub/mvnwebapp:${BUILD_NUMBER}"
                 REGISTRY_CREDENTIALS = credentials('docker')
                 HOME = "${env.WORKSPACE}"
             }
             steps{
                 script {
-                		sh 'docker build -t ${IMAGE} .'
-                        def dockerImage = docker.image("${IMAGE}")
-                        docker.withRegistry('https://index.docker.io/v1/', 'docker')
-                        dockerImage.push()
+                		sh 'docker build -t ashudhub/mvnwebapp:'${BUILD_NUMBER}' .'
+                        //def dockerImage = docker.image("${IMAGE}")
+                        docker.withRegistry('https://index.docker.io/v1/', 'docker') {
+                        docker.image("ashudhub/mvnwebapp:${BUILD_NUMBER}").push() }
                         
                 }
             }
