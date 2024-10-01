@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: sbdapp
-        image: ashudhub/mvnwebapp:1
+        image: ashudhub/mvnwebapp:latest
         ports:
         - containerPort: 8080
